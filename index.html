@@ -3,11 +3,62 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | test1234</title>
+    <title>Interactive Gallery | test1234</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+  <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; min-height: 100%; background: #f2f1ed; color: #171717; font-family: Inter, Pretendard, Arial, sans-serif; }
+      body { min-height: 100vh; }
+      .gallery-shell { min-height: 100vh; display: flex; flex-direction: column; }
+      .gallery-header { height: 76px; padding: 0 42px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(0,0,0,.12); background: rgba(242,241,237,.9); }
+      .brand { font-size: 15px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+      .gallery-nav { display:flex; gap: 26px; font-size: 12px; letter-spacing:.08em; color:#777; }
+      .gallery-main { flex: 1; display:grid; grid-template-columns: 230px minmax(0, 1fr); gap: 46px; padding: 42px; }
+      .gallery-info { display:flex; flex-direction:column; justify-content:space-between; padding: 6px 0 14px; }
+      .eyebrow { font-size:11px; color:#8c8c88; letter-spacing:.18em; text-transform:uppercase; margin-bottom:16px; }
+      .gallery-info h1 { margin:0; font-size:30px; line-height:1.05; font-weight:500; letter-spacing:-.04em; }
+      .description { margin-top:18px; max-width:190px; color:#777; font-size:13px; line-height:1.7; }
+      .meta { border-top:1px solid rgba(0,0,0,.14); padding-top:16px; color:#777; font-size:11px; line-height:1.9; letter-spacing:.04em; }
+      .art-stage { min-width:0; display:flex; align-items:center; justify-content:center; }
+      .art-frame { width:min(100%, 1180px); background:#fff; padding:18px; box-shadow:0 26px 70px rgba(0,0,0,.12); }
+      #unity-container.unity-desktop { position:relative !important; left:auto !important; top:auto !important; transform:none !important; width:100% !important; height:auto !important; background:#111; overflow:hidden; }
+      #unity-canvas { display:block; width:100% !important; height:auto !important; aspect-ratio: 16 / 10; background:#111; }
+      #unity-footer { background:#fff; height:42px; display:flex; align-items:center; }
+      #unity-logo-title-footer { display:none; }
+      #unity-build-title { color:#777; font-size:11px; letter-spacing:.08em; }
+      #unity-fullscreen-button { margin-left:auto; }
+      #unity-loading-bar { z-index:5; }
+      .gallery-footer { height:58px; padding:0 42px; display:flex; align-items:center; justify-content:space-between; border-top:1px solid rgba(0,0,0,.12); color:#888; font-size:10px; letter-spacing:.1em; text-transform:uppercase; }
+      @media (max-width: 900px) {
+        .gallery-header { padding:0 20px; }
+        .gallery-nav { display:none; }
+        .gallery-main { grid-template-columns:1fr; padding:24px 20px; gap:24px; }
+        .gallery-info { display:block; }
+        .description { max-width:100%; }
+        .meta { margin-top:24px; }
+        .art-frame { padding:8px; }
+        .gallery-footer { padding:0 20px; }
+      }
+    </style>
   </head>
   <body>
+    <div class="gallery-shell">
+      <header class="gallery-header">
+        <div class="brand">Digital Exhibition</div>
+        <nav class="gallery-nav"><span>Interactive Work</span><span>WebGL / 2026</span></nav>
+      </header>
+      <main class="gallery-main">
+        <aside class="gallery-info">
+          <div>
+            <div class="eyebrow">Exhibition 01</div>
+            <h1>Interactive<br>Space</h1>
+            <p class="description">A real-time interactive experience presented as a digital gallery piece. Explore the scene directly in your browser.</p>
+          </div>
+          <div class="meta">TITLE — test1234<br>TYPE — Unity WebGL<br>VERSION — 0.1.0</div>
+        </aside>
+        <section class="art-stage">
+          <div class="art-frame">
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
@@ -22,6 +73,11 @@
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">test1234</div>
       </div>
+    </div>
+          </div>
+        </section>
+      </main>
+      <footer class="gallery-footer"><span>Digital Gallery</span><span>Interactive Experience</span></footer>
     </div>
     <script>
       var canvas = document.querySelector("#unity-canvas");
@@ -104,8 +160,8 @@
 
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        canvas.style.width = "100%";
+        canvas.style.height = "auto";
       }
 
       document.querySelector("#unity-loading-bar").style.display = "block";
